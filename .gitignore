@@ -1,0 +1,10 @@
+### IntelliJ IDEA ###
+*.iml
+*.db
+*.log
+.idea
+target
+bin
+
+### Mac OS ###
+.DS_Store
