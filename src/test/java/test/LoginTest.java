@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 public class LoginTest extends BaseTest {
 
     @Test
-    public void loginToRemoteReportPortal() throws InterruptedException {
+    public void loginToLocalReportPortal() throws InterruptedException {
         LoginService loginService = new LoginService();
         loginService.logIn(AccountManager.defaultAccount());
     }
