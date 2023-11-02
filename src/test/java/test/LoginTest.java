@@ -4,7 +4,6 @@ import main.java.businesslogic.manager.AccountManager;
 import main.java.service.LoginService;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
@@ -13,7 +12,6 @@ public class LoginTest extends BaseTest {
     public void loginToLocalReportPortal() throws InterruptedException {
         LoginService loginService = new LoginService();
         loginService.logIn(AccountManager.defaultAccount());
-        Assert.assertEquals(3, 4);
     }
 
     @Test
