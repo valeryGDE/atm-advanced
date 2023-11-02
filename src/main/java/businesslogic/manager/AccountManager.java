@@ -12,6 +12,9 @@ public class AccountManager {
         return account;
     }
 
+
+
+
     public static Account adminAccount() {
         Account account = new Account();
         account.setEmail(PropertyReader.getProperty(EnvProperty.ADMIN_LOGIN_NAME.getKey()));
