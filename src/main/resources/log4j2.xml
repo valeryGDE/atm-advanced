@@ -4,7 +4,7 @@
         <Property name="pattern">%d{HH:mm:ss} [%-p] - %m{nolookups}%n</Property>
     </Properties>
     <Appenders>
-        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+        <Console name="STDOUT" target="SYSTEM_OUT">
             <PatternLayout pattern="${pattern}"/>
         </Console>
         <ReportPortalLog4j2Appender name="ReportPortalAppender">
@@ -14,7 +14,7 @@
     <Loggers>
         <Root level="debug">
             <appender-ref ref="ReportPortalAppender"/>
-            <appender-ref ref="ConsoleAppender"/>
+            <appender-ref ref="STDOUT"/>
         </Root>
     </Loggers>
 </Configuration>
