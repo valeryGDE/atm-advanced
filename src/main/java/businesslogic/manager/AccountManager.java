@@ -18,5 +18,4 @@ public class AccountManager {
         account.setPassword(PropertyReader.getProperty(EnvProperty.ADMIN_PASSWORD.getKey()));
         return account;
     }
-
 }
