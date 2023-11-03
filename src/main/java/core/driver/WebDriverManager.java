@@ -1,7 +1,6 @@
 package main.java.core.driver;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 public class WebDriverManager {
     private static WebDriver driver;
@@ -11,11 +10,7 @@ public class WebDriverManager {
 
     public static WebDriver getWebDriverInstance() {
         if (driver == null) {
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless=new");
-//            driver = new CustomChromeDriver(options);
-            driver = new CustomChromeDriver();
-            driver.manage().window().maximize();
+            driver = DriverFactory.createBrowser(BrowserType.CHROME);
         }
         return driver;
     }

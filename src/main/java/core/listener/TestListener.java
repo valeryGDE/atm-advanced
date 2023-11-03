@@ -1,4 +1,4 @@
-package main.java.listener;
+package main.java.core.listener;
 
 import main.java.utils.Screenshoter;
 import org.testng.ITestContext;
