@@ -21,7 +21,6 @@ public class LoginService extends AbstractService {
         Log.info("Log in using personal Epam account");
         loginPage.openPage(PropertyReader.getProperty(EnvProperty.REMOTE_BASE_URL.getKey()));
         loginPage.clickLoginEpamButton();
-        sideBarPage.waitForFiltersButtonIsShown();
     }
 
     public void logIn(Account account) {
