@@ -31,20 +31,4 @@ public class LoginPage extends AbstractPage {
         Log.info("Open 'Log in' screen");
         super.openPage(url, emailInput, Duration.ofSeconds(DEFAULT_TIMEOUT));
     }
-
-    public void fillEmailInput(String email) {
-        emailInput.sendKeys(email);
-    }
-
-    public void fillPasswordInput(String password) {
-        passwordInput.sendKeys(password);
-    }
-
-    public void clickLoginEpamButton() {
-        loginEpamButton.click();
-    }
-
-    public void clickLoginButton() {
-        loginButton.click();
-    }
 }

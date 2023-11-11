@@ -6,12 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Getter
-public class SideBarPage extends AbstractPage {
+public class SpinnerPage extends AbstractPage {
 
-    @FindBy(xpath = "//a[contains(@href, 'filters')]")
-    private WebElement filtersButton;
+    @FindBy(xpath = "//div[contains(@class,'spinningPreloader')]")
+    private WebElement loader;
 
-    public SideBarPage(WebDriver driver) {
+    public SpinnerPage(WebDriver driver) {
         super(driver);
     }
 }

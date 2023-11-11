@@ -2,21 +2,23 @@ package main.java.core.driver;
 
 import org.openqa.selenium.WebDriver;
 
-public class WebDriverManager {
-    private static WebDriver driver;
+import java.util.Objects;
 
-    private WebDriverManager() {
+public class WebDriverManager {
+
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+
+    public static void setDriver(BrowserType browserType) {
+        WebDriver webDriver = DriverFactory.createBrowser(browserType);
+        driver.set(Objects.requireNonNull(webDriver));
     }
 
-    public static WebDriver getWebDriverInstance() {
-        if (driver == null) {
-            driver = DriverFactory.createBrowser(BrowserType.CHROME);
-        }
-        return driver;
+    public static WebDriver getDriver() {
+        return Objects.requireNonNull(driver.get());
     }
 
     public static void closeDriver() {
-        driver.quit();
-        driver = null;
+        getDriver().quit();
+        driver.remove();
     }
 }
