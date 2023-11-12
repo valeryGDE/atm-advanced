@@ -68,6 +68,7 @@ public class FiltersTest extends BaseTest {
         filtersBll.getLaunchesService().clickCancelButton();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
+        filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         filtersBll.removeFilter(name);
     }
 }
