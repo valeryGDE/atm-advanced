@@ -23,30 +23,42 @@ public class FiltersBll {
         spinnerService = new SpinnerService(driver);
     }
 
-    public void createFilter(Filter filter) {
-        filtersService.clickAddFilterButton();
-        launchesService.addFilterConditions(filter);
-        launchesService.clickSaveButton();
-        launchesService.typeFilterName(filter.getName());
-        launchesService.clickAddButton();
-        launchesService.waitForInputIsNotShown();
+    public void createFilter(Filter... filters) {
+        createFilter(true, filters);
     }
 
-    public void removeFilter(Filter filter) {
-        filtersService.clickDeleteFilter(filter.getName());
-        filtersService.clickAcceptDeleteButton();
+    public void createFilter(boolean isFromFiltersPage, Filter... filters) {
+        for (int i = 0; i < filters.length; i++) {
+            Filter filter = filters[i];
+            if (i == 0 && isFromFiltersPage) {
+                filtersService.clickAddFilterButton();
+            } else {
+                launchesService.clickAddFilerButton();
+            }
+            launchesService.addFilterConditions(filter);
+            launchesService.clickSaveButton();
+            launchesService.typeFilterName(filter.getName());
+            launchesService.clickAddButton();
+            launchesService.waitForInputIsNotShown();
+        }
+    }
+
+    public void removeFilters(String... filterNames) {
+        for (String filterName : filterNames) {
+            removeFilter(filterName);
+        }
     }
 
     public void removeFilter(String name) {
+        var filterRow = filtersService.getFilterRowByName(name);
         filtersService.clickDeleteFilter(name);
         filtersService.clickAcceptDeleteButton();
+        filtersService.waitFilterIsNotShown(filterRow);
     }
 
     public void removeAllFilters() {
-        filtersService.performActionOnFilters(filterRow -> {
-            filterRow.click();
-            filtersService.clickAcceptDeleteButton();
-            filtersService.waitFilterIsNotShown(filterRow);
-        });
+        for (String filterName : filtersService.getFiltersNamesList()) {
+            removeFilter(filterName);
+        }
     }
 }

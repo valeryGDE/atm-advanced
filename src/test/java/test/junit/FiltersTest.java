@@ -28,16 +28,7 @@ public class FiltersTest extends BaseTest {
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        Assert.assertTrue(filtersBll.getFiltersService().isFilterNameDisplayed(name), String.format("Filter with name %s is shown", name));
+        Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(name), String.format("Filter with name %s is shown", name));
         filtersBll.removeFilter(name);
     }
-
-//    @Test
-//    public void deleteAllFilters() {
-//FiltersBll filtersBll = new FiltersBll(getDriver());
-//    LoginBll loginBll = new LoginBll(getDriver());
-//        loginBll.logIn(AccountManager.defaultAccount());
-//        loginBll.getSideBarService().clickFiltersButton();
-//        filtersBll.removeAllFilters();
-//    }
 }

@@ -1,13 +1,14 @@
 package main.java.pagefactory.service;
 
+import main.java.core.logger.Log;
 import main.java.pagefactory.page.FiltersPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
 
 import static main.java.pagefactory.page.AbstractPage.DEFAULT_TIMEOUT;
 
@@ -23,8 +24,9 @@ public class FiltersService extends AbstractService {
         filtersPage.getAddFilterButton().click();
     }
 
-    public boolean isFilterNameDisplayed(String filterName) {
-        return getFiltersNamesList().contains(filterName);
+    public boolean isFilterListContainsFilters(String... filterNames) {
+        Log.info(String.format("Check that %s are shown in the filter list", Arrays.toString(filterNames)));
+        return getFiltersNamesList().containsAll(Arrays.asList(filterNames));
     }
 
     public void clickAcceptDeleteButton() {
@@ -54,13 +56,7 @@ public class FiltersService extends AbstractService {
                 .toList();
     }
 
-    public void performActionOnFilters(Consumer<WebElement> action) {
-        for (WebElement filterRow : filtersPage.getFilterRows()) {
-            action.accept(filterRow);
-        }
-    }
-
-    private WebElement getFilterRowByName(String filterName) {
+    public WebElement getFilterRowByName(String filterName) {
         return filtersPage.getFilterRows()
                 .stream()
                 .filter(row -> filtersPage.getFilterRowName(row).equals(filterName))

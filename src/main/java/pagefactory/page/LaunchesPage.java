@@ -26,6 +26,12 @@ public class LaunchesPage extends AbstractPage {
     @FindBy(xpath = "//button[text()='Add']")
     private WebElement addButton;
 
+    @FindBy(xpath = "//button[text()='Cancel']")
+    private WebElement cancelButton;
+
+    @FindBy(xpath = "//button[normalize-space(.)='Add filter']")
+    private WebElement addFilterButton;
+
     @FindBy(xpath = "//div[text()='More']")
     private WebElement moreButton;
 

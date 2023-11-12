@@ -8,7 +8,6 @@ import lombok.Getter;
 public enum Condition {
 
     LAUNCH_NAME("Launch name"),
-    OWNER("Owner"),
     DESCRIPTION("Description");
 
     private final String key;

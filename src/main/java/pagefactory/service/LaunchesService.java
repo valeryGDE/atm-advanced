@@ -1,6 +1,7 @@
 package main.java.pagefactory.service;
 
 import main.java.businesslogic.model.Filter;
+import main.java.core.logger.Log;
 import main.java.enums.Condition;
 import main.java.pagefactory.page.LaunchesPage;
 import org.openqa.selenium.WebDriver;
@@ -21,12 +22,25 @@ public class LaunchesService extends AbstractService {
         super(driver);
     }
 
+    public boolean isDescriptionInputShown() {
+        Log.info("Check that Description Input is shown");
+        return launchesPage.getDescriptionInput().isDisplayed();
+    }
+
     public List<String> getCheckboxesNames() {
         return launchesPage.getConditionCheckboxes().stream().map(WebElement::getText).toList();
     }
 
     public void clickAddButton() {
         launchesPage.getAddButton().click();
+    }
+
+    public void clickCancelButton() {
+        launchesPage.getCancelButton().click();
+    }
+
+    public void clickAddFilerButton() {
+        launchesPage.getAddFilterButton().click();
     }
 
     public void clickSaveButton() {

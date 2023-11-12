@@ -3,7 +3,7 @@ package test.junit;
 import main.java.core.driver.BrowserType;
 import main.java.core.driver.WebDriverManager;
 import main.java.core.logger.Log;
-import main.java.data.DataProviders;
+import main.java.core.data.DataProviders;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
