@@ -1,9 +1,9 @@
 package test.testng;
 
+import main.java.core.data.DataProviders;
 import main.java.core.driver.BrowserType;
 import main.java.core.driver.WebDriverManager;
 import main.java.core.logger.Log;
-import main.java.core.data.DataProviders;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

@@ -5,9 +5,9 @@ import main.java.businesslogic.areas.LoginBll;
 import main.java.businesslogic.manager.AccountManager;
 import main.java.businesslogic.model.Filter;
 import main.java.enums.Condition;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -30,7 +30,7 @@ public class FiltersTest extends BaseTest {
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(name), String.format("Filter with name %s is shown", name));
+        Assertions.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(name), String.format("Filter with name %s is shown", name));
         filtersBll.removeFilter(name);
     }
 
@@ -53,7 +53,7 @@ public class FiltersTest extends BaseTest {
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         filtersBll.removeFilter(nameTwo);
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(nameOne), String.format("Filter with name %s is shown", nameOne));
+        Assertions.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(nameOne), String.format("Filter with name %s is shown", nameOne));
         filtersBll.removeFilter(nameOne);
     }
 
@@ -68,7 +68,7 @@ public class FiltersTest extends BaseTest {
         filtersBll.createFilter(new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name));
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         filtersBll.createFilter(false, new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name));
-        Assert.assertTrue(filtersBll.getLaunchesService().isDescriptionInputShown(), "Description input is shown");
+        Assertions.assertTrue(filtersBll.getLaunchesService().isDescriptionInputShown(), "Description input is shown");
         filtersBll.getLaunchesService().clickCancelButton();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();

@@ -40,7 +40,9 @@ dependencies {
 }
 
 task testJ(type: Test) {
-    useJUnitPlatform {}
+    useJUnitPlatform {
+        include 'test/junit/FiltersTest.class'
+    }
 }
 
 test {
