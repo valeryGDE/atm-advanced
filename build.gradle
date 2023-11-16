@@ -41,11 +41,17 @@ dependencies {
 
 task testJ(type: Test) {
     useJUnitPlatform {
-        include 'test/junit/FiltersTest.class'
+//        include 'test/junit/FiltersTest.class'
     }
 }
 
 test {
+    def runSuite = project.hasProperty("suite")
     testLogging.showStandardStreams = true
-    useTestNG {}
+    useTestNG {
+        if (runSuite) {
+            def suiteToRun = project.getProperty("suite")
+            suites "src/test/resources/testng/" + suiteToRun
+        }
+    }
 }
