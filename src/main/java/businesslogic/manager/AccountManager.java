@@ -5,6 +5,7 @@ import main.java.core.properties.EnvProperty;
 import main.java.core.properties.PropertyReader;
 
 public class AccountManager {
+
     public static Account defaultAccount() {
         Account account = new Account();
         account.setEmail(PropertyReader.getProperty(EnvProperty.DEFAULT_LOGIN_NAME.getKey()));

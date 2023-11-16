@@ -15,7 +15,6 @@ import java.time.Duration;
 public abstract class AbstractPage {
 
     public static final int DEFAULT_TIMEOUT = 10;
-
     protected WebDriver driver;
 
     protected AbstractPage(WebDriver driver) {
@@ -25,10 +24,10 @@ public abstract class AbstractPage {
 
     protected void openPage(String url, WebElement element, Duration timeout) {
         driver.get(url);
-        waitForElement(ExpectedConditions.visibilityOf(element), timeout);
+        waitForElement(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)), timeout);
     }
 
-    protected void waitForElement(ExpectedCondition<WebElement> condition, Duration timeout) {
+    public void waitForElement(ExpectedCondition<?> condition, Duration timeout) {
         try {
             new WebDriverWait(driver, timeout).until(condition);
         } catch (TimeoutException e) {

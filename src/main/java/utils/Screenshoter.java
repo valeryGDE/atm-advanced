@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class Screenshoter {
 
     public void makeScreenshot() {
-        File screenCapture = ((TakesScreenshot) WebDriverManager.getWebDriverInstance()).getScreenshotAs(OutputType.FILE);
+        File screenCapture = ((TakesScreenshot) WebDriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
         try {
             var pathToFile = ".//target/screenshots/" + getCurrentTimeAsString() + ".png";
             File outputFile = new File(pathToFile);
