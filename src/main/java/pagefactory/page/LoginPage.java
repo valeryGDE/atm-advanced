@@ -2,14 +2,11 @@ package main.java.pagefactory.page;
 
 import lombok.Getter;
 import main.java.core.logger.Log;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.time.Duration;
-
 @Getter
-public class LoginPage extends AbstractPage {
+public class LoginPage extends DefaultPage {
 
     @FindBy(xpath = "//div[contains(@class,'login-field')]//input")
     private WebElement emailInput;
@@ -23,12 +20,8 @@ public class LoginPage extends AbstractPage {
     @FindBy(xpath = "//div[contains(@class,'externalLoginBlock')]/button")
     private WebElement loginEpamButton;
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
-
     public void openPage(String url) {
         Log.info("Open 'Log in' screen");
-        super.openPage(url, emailInput, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        super.openPage(url);
     }
 }

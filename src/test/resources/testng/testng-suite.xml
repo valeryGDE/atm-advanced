@@ -1,16 +1,20 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<!--<suite name="TestNG suite" parallel = "methods" thread-count = "8" data-provider-thread-count="2">-->
-<suite name="TestNG suite" parallel = "classes" thread-count = "2" data-provider-thread-count="2">
+<suite name="TestNG suite" parallel = "methods" thread-count = "8">
+<!--<suite name="TestNG suite" parallel="classes" thread-count="2">-->
 
     <test name="[TestCheck]">
         <classes>
-            <class name="test.testng.FiltersTest">
-<!--                <methods>-->
-<!--                    <include name="deleteFilter"/>-->
-<!--                </methods>-->
-            </class>
+<!--            <class name="test.testng.FiltersTest">-->
+                <!--                <methods>-->
+                <!--                    <include name="deleteFilter"/>-->
+                <!--                </methods>-->
+<!--            </class>-->
             <class name="test.testng.LoginTest">
+                <methods>
+                    <include name="loginDefaultUser"/>
+                    <include name="loginAdminUser"/>
+                </methods>
             </class>
         </classes>
     </test>

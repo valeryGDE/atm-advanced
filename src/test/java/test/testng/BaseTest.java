@@ -1,5 +1,9 @@
 package test.testng;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import main.java.businesslogic.areas.FiltersBll;
+import main.java.businesslogic.areas.LoginBll;
 import main.java.core.data.DataProviders;
 import main.java.core.driver.BrowserType;
 import main.java.core.driver.WebDriverManager;
@@ -10,9 +14,15 @@ import org.testng.annotations.BeforeMethod;
 
 public class BaseTest extends DataProviders {
 
+    @Inject
+    protected LoginBll loginBll;
+    @Inject
+    protected FiltersBll filtersBll;
+
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         WebDriverManager.setDriver(BrowserType.CHROME);
+        Guice.createInjector().injectMembers(this);
     }
 
     @AfterMethod(alwaysRun = true)

@@ -1,26 +1,21 @@
 package main.java.businesslogic.areas;
 
+import com.google.inject.Inject;
 import lombok.Getter;
 import main.java.businesslogic.model.Account;
 import main.java.core.logger.Log;
 import main.java.core.properties.EnvProperty;
 import main.java.core.properties.PropertyReader;
-import main.java.pagefactory.service.LoginService;
-import main.java.pagefactory.service.SideBarService;
-import org.openqa.selenium.WebDriver;
+import main.java.pagefactory.service.LoginServiceBase;
+import main.java.pagefactory.service.SideBarServiceBase;
 
 @Getter
 public class LoginBll {
 
-    private final WebDriver driver;
-    private final LoginService loginService;
-    private final SideBarService sideBarService;
-
-    public LoginBll(WebDriver driver) {
-        this.driver = driver;
-        loginService = new LoginService(driver);
-        sideBarService = new SideBarService(driver);
-    }
+    @Inject
+    private LoginServiceBase loginService;
+    @Inject
+    private SideBarServiceBase sideBarService;
 
     public void logInEpam() {
         Log.info("Log in using personal Epam account");

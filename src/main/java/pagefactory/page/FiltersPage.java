@@ -2,14 +2,13 @@ package main.java.pagefactory.page;
 
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 @Getter
-public class FiltersPage extends AbstractPage {
+public class FiltersPage extends DefaultPage {
 
     @FindBy(xpath = "//button[normalize-space(.)='Add Filter']")
     private WebElement addFilterButton;
@@ -19,10 +18,6 @@ public class FiltersPage extends AbstractPage {
 
     @FindBy(xpath = "//button[text()='Delete']")
     private WebElement acceptDeleteButton;
-
-    public FiltersPage(WebDriver driver) {
-        super(driver);
-    }
 
     public String getFilterRowName(WebElement webElement) {
         return webElement.getText().lines().findFirst().orElse("");

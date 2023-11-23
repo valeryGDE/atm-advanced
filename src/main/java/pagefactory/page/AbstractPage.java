@@ -4,10 +4,8 @@ import main.java.core.logger.Log;
 import main.java.utils.Screenshoter;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -22,12 +20,11 @@ public abstract class AbstractPage {
         PageFactory.initElements(driver, this);
     }
 
-    protected void openPage(String url, WebElement element, Duration timeout) {
+    protected void openPage(String url) {
         driver.get(url);
-        waitForElement(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(element)), timeout);
     }
 
-    public void waitForElement(ExpectedCondition<?> condition, Duration timeout) {
+    public void waitFor(ExpectedCondition<?> condition, Duration timeout) {
         try {
             new WebDriverWait(driver, timeout).until(condition);
         } catch (TimeoutException e) {

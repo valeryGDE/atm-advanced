@@ -1,7 +1,5 @@
 package test.testng;
 
-import main.java.businesslogic.areas.FiltersBll;
-import main.java.businesslogic.areas.LoginBll;
 import main.java.businesslogic.manager.AccountManager;
 import main.java.businesslogic.model.Filter;
 import main.java.enums.Condition;
@@ -18,8 +16,6 @@ public class FiltersTest extends BaseTest {
     @Test(dataProvider = "getFiltersNames")
     public void createFilter(String name) {
         Filter filter = new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name);
-        FiltersBll filtersBll = new FiltersBll(getDriver());
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
@@ -38,8 +34,6 @@ public class FiltersTest extends BaseTest {
                 new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, nameOne)), nameOne),
                 new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, nameTwo)), nameTwo)
         );
-        FiltersBll filtersBll = new FiltersBll(getDriver());
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
@@ -56,8 +50,6 @@ public class FiltersTest extends BaseTest {
 
     @Test(dataProvider = "getFiltersNames")
     public void impossibleToSaveFilterWithTheSameName(String name) {
-        FiltersBll filtersBll = new FiltersBll(getDriver());
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
