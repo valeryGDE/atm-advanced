@@ -7,7 +7,7 @@ Feature: as a user I want to get ability to delete filters
     And the user clicks the Login button
     Then login should be successful
 
-  Scenario: Removed filter is not shown on Filters oage
+  Scenario: Removed filter is not shown on Filters page
     Given the user navigates to Filters tab
     When the user creates new filters
       | Condition   | Condition name | Filter name |
