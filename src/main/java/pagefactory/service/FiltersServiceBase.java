@@ -28,6 +28,11 @@ public class FiltersServiceBase extends AbstractBaseService<FiltersPage> {
         return getFiltersNamesList().containsAll(Arrays.asList(filterNames));
     }
 
+    public boolean isFilterListContainsOnlyOneEntryWithName(String filterName) {
+        Log.info(String.format("Check that filter list contains only one element with name %s", filterName));
+        return getFiltersNamesList().stream().filter(name -> name.equals(filterName)).count() == 1;
+    }
+
     public void clickAcceptDeleteButton() {
         getPage().getAcceptDeleteButton().click();
     }

@@ -8,7 +8,8 @@ public class LoginServiceBase extends AbstractBaseService<LoginPage> {
     @Override
     public boolean isPageShown() {
         return getPage().getEmailInput().isDisplayed()
-                && getPage().getPasswordInput().isDisplayed();
+                && getPage().getPasswordInput().isDisplayed()
+                && getPage().getLoginButton().isDisplayed();
     }
 
     public void openPage(String url) {
@@ -17,10 +18,12 @@ public class LoginServiceBase extends AbstractBaseService<LoginPage> {
     }
 
     public void fillEmailInput(String email) {
+        getPage().getEmailInput().click();
         getPage().getEmailInput().sendKeys(email);
     }
 
     public void fillPasswordInput(String password) {
+        getPage().getPasswordInput().click();
         getPage().getPasswordInput().sendKeys(password);
     }
 

@@ -5,6 +5,7 @@
 .idea
 target
 bin
+out
 
 ### Mac OS ###
 .DS_Store

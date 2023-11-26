@@ -5,7 +5,7 @@ import org.testng.annotations.DataProvider;
 public class DataProviders {
 
     @DataProvider(parallel = true)
-    public static Object[][] getFiltersNames() {
+    public static Object[][] getFiltersNamesForCreation() {
         return new Object[][]{
                 {"First"},
                 {"Second"},
@@ -16,13 +16,24 @@ public class DataProviders {
     }
 
     @DataProvider(parallel = true)
+    public static Object[][] getFiltersNamesForSaving() {
+        return new Object[][]{
+                {"Cat"},
+                {"Dog"},
+                {"Deer"},
+                {"Pig"},
+                {"Cow"}
+        };
+    }
+
+    @DataProvider(parallel = true)
     public static Object[][] getFiltersList() {
         return new Object[][]{
-                {"NameOne", "NameTwo"},
-                {"HelloOne", "ByeOne"},
-                {"RainOne", "SkyOne"},
-                {"Eat", "Ate"},
-                {"Drive", "Drove"}
+                {"Name"},
+                {"Hello"},
+                {"Rain"},
+                {"Eat"},
+                {"Drive"}
         };
     }
 }

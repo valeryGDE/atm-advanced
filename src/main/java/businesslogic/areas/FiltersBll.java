@@ -5,7 +5,7 @@ import lombok.Getter;
 import main.java.businesslogic.model.Filter;
 import main.java.pagefactory.service.FiltersServiceBase;
 import main.java.pagefactory.service.LaunchesServiceBase;
-import main.java.pagefactory.service.SpinnerServiceBase;
+import main.java.pagefactory.service.CommonComponentsServiceBase;
 
 @Getter
 public class FiltersBll {
@@ -15,7 +15,7 @@ public class FiltersBll {
     @Inject
     private LaunchesServiceBase launchesService;
     @Inject
-    private SpinnerServiceBase spinnerService;
+    private CommonComponentsServiceBase spinnerService;
 
     public void createFilter(Filter... filters) {
         createFilter(true, filters);
@@ -28,12 +28,17 @@ public class FiltersBll {
                 filtersService.clickAddFilterButton();
             } else {
                 launchesService.clickAddFilerButton();
+                spinnerService.waitForSpinnerIsNotShown();
             }
+            spinnerService.waitForSpinnerIsNotShown();
             launchesService.addFilterConditions(filter);
+            launchesService.waitForSaveButtonIsClickable();
             launchesService.clickSaveButton();
+            launchesService.waitForInputIsShown();
             launchesService.typeFilterName(filter.getName());
             launchesService.clickAddButton();
             launchesService.waitForInputIsNotShown();
+            spinnerService.waitForSpinnerIsNotShown();
         }
     }
 

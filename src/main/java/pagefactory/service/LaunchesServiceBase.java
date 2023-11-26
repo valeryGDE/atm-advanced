@@ -47,6 +47,7 @@ public class LaunchesServiceBase extends AbstractBaseService<LaunchesPage> {
     }
 
     public void typeFilterName(String text) {
+        getPage().getNameInput().click();
         getPage().getNameInput().clear();
         getPage().getNameInput().sendKeys(text);
     }
@@ -56,19 +57,24 @@ public class LaunchesServiceBase extends AbstractBaseService<LaunchesPage> {
     }
 
     public void addFilterConditions(Filter filter) {
-        filter.getConditionStringList().forEach(conditionMap ->
-                conditionMap.forEach((condition, value) -> {
-                            getConditionWithName(condition);
-                    getPage().getInputFieldByConditionName(condition.getKey()).sendKeys(value);
-                        }
-                )
-        );
+        filter.getConditionStringMap().forEach((condition, value) -> {
+            getConditionWithName(condition);
+            getPage().getInputFieldByConditionName(condition.getKey()).sendKeys(value);
+        });
+    }
+
+    public void waitForSaveButtonIsClickable() {
+        getPage().waitFor(ExpectedConditions.elementToBeClickable(getPage().getSaveButton()), Duration.ofSeconds(DEFAULT_TIMEOUT));
+    }
+
+    public void waitForInputIsShown() {
+        getPage().waitFor(ExpectedConditions.visibilityOf(getPage().getDescriptionInput()), Duration.ofSeconds(DEFAULT_TIMEOUT));
     }
 
     public void waitForInputIsNotShown() {
         getPage().waitFor(ExpectedConditions.invisibilityOf(getPage().getDescriptionInput()), Duration.ofSeconds(DEFAULT_TIMEOUT));
-
     }
+
 
     private void addCondition(Condition condition) {
         clickMoreButton();
@@ -76,15 +82,14 @@ public class LaunchesServiceBase extends AbstractBaseService<LaunchesPage> {
                 .filter(checkbox -> checkbox.getText().equals(condition.getKey()))
                 .findFirst()
                 .ifPresent(WebElement::click);
+
     }
 
-    private WebElement getConditionWithName(Condition condition) {
+    private void getConditionWithName(Condition condition) {
         WebElement entity = findConditionEntity(condition);
         if (entity == null) {
             addCondition(condition);
-            entity = findConditionEntity(condition);
         }
-        return entity;
     }
 
     private WebElement findConditionEntity(Condition condition) {

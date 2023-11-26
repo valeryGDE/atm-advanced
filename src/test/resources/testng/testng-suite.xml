@@ -5,17 +5,17 @@
 
     <test name="[TestCheck]">
         <classes>
-<!--            <class name="test.testng.FiltersTest">-->
-                <!--                <methods>-->
-                <!--                    <include name="deleteFilter"/>-->
-                <!--                </methods>-->
-<!--            </class>-->
-            <class name="test.testng.LoginTest">
+            <class name="test.testng.FiltersTest">
                 <methods>
-                    <include name="loginDefaultUser"/>
-                    <include name="loginAdminUser"/>
+                    <include name="impossibleToSaveFilterWithTheSameName"/>
                 </methods>
             </class>
+<!--            <class name="test.testng.LoginTest">-->
+<!--                <methods>-->
+<!--                    <include name="loginDefaultUser"/>-->
+<!--                    <include name="loginAdminUser"/>-->
+<!--                </methods>-->
+<!--            </class>-->
         </classes>
     </test>
 </suite>

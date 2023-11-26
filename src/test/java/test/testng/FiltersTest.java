@@ -6,16 +6,13 @@ import main.java.enums.Condition;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 public class FiltersTest extends BaseTest {
 
-    @Test(dataProvider = "getFiltersNames")
+    @Test(dataProvider = "getFiltersNamesForCreation")
     public void createFilter(String name) {
-        Filter filter = new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name);
+        Filter filter = new Filter(Map.of(Condition.LAUNCH_NAME, name), name);
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
@@ -24,43 +21,43 @@ public class FiltersTest extends BaseTest {
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
+        filtersBll.getFiltersService().waitPageIsShown();
         Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(name), String.format("Filter with name %s is shown", name));
-        filtersBll.removeFilter(name);
     }
 
     @Test(dataProvider = "getFiltersList")
-    public void deleteFilter(String nameOne, String nameTwo) {
-        List<Filter> filtersList = Arrays.asList(
-                new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, nameOne)), nameOne),
-                new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, nameTwo)), nameTwo)
-        );
+    public void deleteFilter(String name) {
+        Filter filter = new Filter(Map.of(Condition.DESCRIPTION, name), name);
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        filtersBll.createFilter(filtersList.toArray(new Filter[0]));
+        filtersBll.createFilter(filter);
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        filtersBll.removeFilter(nameTwo);
+        filtersBll.getFiltersService().waitPageIsShown();
+        filtersBll.removeFilter(name);
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsFilters(nameOne), String.format("Filter with name %s is shown", nameOne));
-        filtersBll.removeFilter(nameOne);
+        Assert.assertFalse(filtersBll.getFiltersService().isFilterListContainsFilters(name), String.format("Filter with name %s is shown", name));
     }
 
-    @Test(dataProvider = "getFiltersNames")
+    @Test(dataProvider = "getFiltersNamesForSaving")
     public void impossibleToSaveFilterWithTheSameName(String name) {
+        Filter filter = new Filter(Map.of(Condition.LAUNCH_NAME, name), name);
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        filtersBll.createFilter(new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name));
+        filtersBll.createFilter(filter);
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        filtersBll.createFilter(false, new Filter(Collections.singletonList(Map.of(Condition.LAUNCH_NAME, name)), name));
+        Filter filterTwo = new Filter(Map.of(Condition.DESCRIPTION, name), name);
+        filtersBll.createFilter(false, filterTwo);
         Assert.assertTrue(filtersBll.getLaunchesService().isDescriptionInputShown(), "Description input is shown");
         filtersBll.getLaunchesService().clickCancelButton();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
         loginBll.getSideBarService().clickFiltersButton();
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
-        filtersBll.removeFilter(name);
+        filtersBll.getFiltersService().waitPageIsShown();
+        Assert.assertTrue(filtersBll.getFiltersService().isFilterListContainsOnlyOneEntryWithName(name), String.format("Filter with name %s is only one", name));
     }
 }

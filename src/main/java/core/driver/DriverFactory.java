@@ -19,6 +19,7 @@ public class DriverFactory {
             default -> driver = new ChromeDriver();
         }
         driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         EventFiringDecorator<WebDriver> eventFiringDecorator = new EventFiringDecorator<>(new LoggingListener());
 
         return eventFiringDecorator.decorate(driver);

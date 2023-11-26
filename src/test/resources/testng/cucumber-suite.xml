@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Cucumber suite" parallel = "methods" thread-count = "4">
+<!--<suite name="Cucumber suite" parallel = "classes" thread-count = "4">-->
+
+    <test name="All scenarios">
+        <classes>
+            <class name="test.cucumber.runner.CucumberTestNgRunner">
+            </class>
+        </classes>
+    </test>
+</suite>

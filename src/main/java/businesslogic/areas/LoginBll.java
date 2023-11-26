@@ -6,6 +6,7 @@ import main.java.businesslogic.model.Account;
 import main.java.core.logger.Log;
 import main.java.core.properties.EnvProperty;
 import main.java.core.properties.PropertyReader;
+import main.java.pagefactory.service.CommonComponentsServiceBase;
 import main.java.pagefactory.service.LoginServiceBase;
 import main.java.pagefactory.service.SideBarServiceBase;
 
@@ -14,6 +15,8 @@ public class LoginBll {
 
     @Inject
     private LoginServiceBase loginService;
+    @Inject
+    private CommonComponentsServiceBase commonComponentsService;
     @Inject
     private SideBarServiceBase sideBarService;
 
@@ -30,5 +33,6 @@ public class LoginBll {
         loginService.fillEmailInput(account.getEmail());
         loginService.clickLoginButton();
         sideBarService.waitForFiltersButtonIsClickable();
+        commonComponentsService.waitForNotificationIsNotShown();
     }
 }

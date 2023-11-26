@@ -25,6 +25,7 @@ public abstract class AbstractPage {
     }
 
     public void waitFor(ExpectedCondition<?> condition, Duration timeout) {
+        Log.info("Waiting for " + condition.toString() + " during " + timeout);
         try {
             new WebDriverWait(driver, timeout).until(condition);
         } catch (TimeoutException e) {
