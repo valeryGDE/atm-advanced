@@ -1,3 +1,4 @@
+@Smoke
 Feature: as a user I want to get ability to create filters
 
   Background: Log in with Default account credentials

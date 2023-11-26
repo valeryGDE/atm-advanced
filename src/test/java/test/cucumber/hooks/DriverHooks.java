@@ -8,15 +8,9 @@ import main.java.core.logger.Log;
 
 public class DriverHooks {
 
-//    @Inject
-//    protected LoginBll loginBll;
-//    @Inject
-//    protected FiltersBll filtersBll;
-
     @Before
     public void setupDriver() {
         WebDriverManager.setDriver(BrowserType.CHROME);
-//        Guice.createInjector().injectMembers(this);
     }
 
     @After
