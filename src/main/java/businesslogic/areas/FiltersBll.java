@@ -1,27 +1,21 @@
 package main.java.businesslogic.areas;
 
-import lombok.Data;
+import com.google.inject.Inject;
+import lombok.Getter;
 import main.java.businesslogic.model.Filter;
-import main.java.pagefactory.service.FiltersService;
-import main.java.pagefactory.service.LaunchesService;
-import main.java.pagefactory.service.SpinnerService;
-import org.openqa.selenium.WebDriver;
+import main.java.pagefactory.service.FiltersServiceBase;
+import main.java.pagefactory.service.LaunchesServiceBase;
+import main.java.pagefactory.service.CommonComponentsServiceBase;
 
-@Data
+@Getter
 public class FiltersBll {
 
-    private WebDriver driver;
-
-    private FiltersService filtersService;
-    private LaunchesService launchesService;
-    private SpinnerService spinnerService;
-
-    public FiltersBll(WebDriver driver) {
-        this.driver = driver;
-        filtersService = new FiltersService(driver);
-        launchesService = new LaunchesService(driver);
-        spinnerService = new SpinnerService(driver);
-    }
+    @Inject
+    private FiltersServiceBase filtersService;
+    @Inject
+    private LaunchesServiceBase launchesService;
+    @Inject
+    private CommonComponentsServiceBase spinnerService;
 
     public void createFilter(Filter... filters) {
         createFilter(true, filters);
@@ -34,12 +28,17 @@ public class FiltersBll {
                 filtersService.clickAddFilterButton();
             } else {
                 launchesService.clickAddFilerButton();
+                spinnerService.waitForSpinnerIsNotShown();
             }
+            spinnerService.waitForSpinnerIsNotShown();
             launchesService.addFilterConditions(filter);
+            launchesService.waitForSaveButtonIsClickable();
             launchesService.clickSaveButton();
+            launchesService.waitForInputIsShown();
             launchesService.typeFilterName(filter.getName());
             launchesService.clickAddButton();
             launchesService.waitForInputIsNotShown();
+            spinnerService.waitForSpinnerIsNotShown();
         }
     }
 

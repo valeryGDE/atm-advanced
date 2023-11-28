@@ -1,21 +1,31 @@
 package test.junit;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import main.java.businesslogic.areas.FiltersBll;
+import main.java.businesslogic.areas.LoginBll;
+import main.java.core.data.DataProviders;
 import main.java.core.driver.BrowserType;
 import main.java.core.driver.WebDriverManager;
 import main.java.core.logger.Log;
-import main.java.core.data.DataProviders;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 
 public class BaseTest extends DataProviders {
 
-    @BeforeEach
+    @Inject
+    protected LoginBll loginBll;
+    @Inject
+    protected FiltersBll filtersBll;
+
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         WebDriverManager.setDriver(BrowserType.CHROME);
+        Guice.createInjector().injectMembers(this);
     }
 
-    @AfterEach
+    @AfterMethod(alwaysRun = true)
     public void stopBrowser() {
         Log.info("Stop driver: " + WebDriverManager.getDriver().toString());
         WebDriverManager.closeDriver();

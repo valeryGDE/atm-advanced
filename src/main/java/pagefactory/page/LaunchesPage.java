@@ -2,14 +2,13 @@ package main.java.pagefactory.page;
 
 import lombok.Getter;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 @Getter
-public class LaunchesPage extends AbstractPage {
+public class LaunchesPage extends DefaultPage {
 
     @FindBy(xpath = "//div[contains(@class,'entitiesGroup__entity-item')]")
     private List<WebElement> filterEntities;
@@ -37,10 +36,6 @@ public class LaunchesPage extends AbstractPage {
 
     @FindBy(xpath = "//div[contains(@class, 'entity-item')]//span")
     private List<WebElement> conditionCheckboxes;
-
-    public LaunchesPage(WebDriver driver) {
-        super(driver);
-    }
 
     public String getConditionEntityName(WebElement webElement) {
         return webElement.getText().lines().findFirst().orElse("");

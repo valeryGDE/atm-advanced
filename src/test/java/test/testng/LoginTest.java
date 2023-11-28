@@ -1,26 +1,27 @@
 package test.testng;
 
-import main.java.businesslogic.areas.LoginBll;
 import main.java.businesslogic.manager.AccountManager;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
     @Test
     public void loginDefaultUser() {
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logIn(AccountManager.defaultAccount());
+        loginBll.getSideBarService().waitPageIsShown();
+        Assert.assertTrue(loginBll.getSideBarService().isPageShown(), "Check Sidebar is shown");
     }
 
     @Test
     public void loginToRemoteReportPortal() {
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logInEpam();
     }
 
     @Test
     public void loginAdminUser() {
-        LoginBll loginBll = new LoginBll(getDriver());
         loginBll.logIn(AccountManager.adminAccount());
+        loginBll.getSideBarService().waitPageIsShown();
+        Assert.assertTrue(loginBll.getSideBarService().isPageShown(), "Check Sidebar is shown");
     }
 }
