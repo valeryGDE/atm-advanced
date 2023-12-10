@@ -4,10 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import main.java.businesslogic.areas.LoginBll;
-import main.java.businesslogic.manager.AccountManager;
-import main.java.core.properties.EnvProperty;
-import main.java.core.properties.PropertyReader;
+import main.java.ui.businesslogic.areas.LoginBll;
+import main.java.ui.businesslogic.manager.AccountManager;
+import main.java.ui.core.properties.EnvProperty;
+import main.java.ui.core.properties.PropertyReader;
 import org.testng.Assert;
 import test.cucumber.context.TestContext;
 

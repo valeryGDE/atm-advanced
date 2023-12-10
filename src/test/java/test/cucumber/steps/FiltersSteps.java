@@ -2,10 +2,10 @@ package test.cucumber.steps;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
-import main.java.businesslogic.areas.FiltersBll;
-import main.java.businesslogic.areas.LoginBll;
-import main.java.businesslogic.model.Filter;
-import main.java.enums.Condition;
+import main.java.ui.businesslogic.areas.FiltersBll;
+import main.java.ui.businesslogic.areas.LoginBll;
+import main.java.ui.businesslogic.model.Filter;
+import main.java.ui.enums.Condition;
 import org.testng.Assert;
 import test.cucumber.context.TestContext;
 

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Api suite">
+    <test name="All tests">
+        <classes>
+            <class name="test.api.restassured.FiltersApiTest"/>
+            <class name="test.api.httpclient.FiltersHttpClientTest"/>
+        </classes>
+    </test>
+</suite>

@@ -2,9 +2,9 @@ package test.cucumber.hooks;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import main.java.core.driver.BrowserType;
-import main.java.core.driver.WebDriverManager;
-import main.java.core.logger.Log;
+import main.java.ui.core.driver.BrowserType;
+import main.java.ui.core.driver.WebDriverManager;
+import main.java.ui.core.logger.Log;
 
 public class DriverHooks {
 
