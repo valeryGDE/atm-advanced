@@ -3,8 +3,8 @@ package test.cucumber.context;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import lombok.Getter;
-import main.java.businesslogic.areas.FiltersBll;
-import main.java.businesslogic.areas.LoginBll;
+import main.java.ui.businesslogic.areas.FiltersBll;
+import main.java.ui.businesslogic.areas.LoginBll;
 
 @Getter
 public class TestContext {

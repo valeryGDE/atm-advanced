@@ -5,7 +5,7 @@
 
     <test name="[TestCheck]">
         <classes>
-            <class name="test.testng.FiltersTest">
+            <class name="test.ui.testng.FiltersTest">
                 <methods>
                     <include name="impossibleToSaveFilterWithTheSameName"/>
                 </methods>

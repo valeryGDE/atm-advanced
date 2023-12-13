@@ -38,6 +38,12 @@ dependencies {
     implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.14.0'
     implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.14.0'
     implementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.14.0'
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.2'
+// https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5
+    implementation group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.2.3'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.16.0'
 }
 
 task testJ(type: Test) {

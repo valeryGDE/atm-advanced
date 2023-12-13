@@ -1,2 +1,2 @@
-com.epam.reportportal.testng.ReportPortalTestNGListener
-main.java.core.listener.TestListener
+#com.epam.reportportal.testng.ReportPortalTestNGListener
+#main.java.core.listener.TestListener

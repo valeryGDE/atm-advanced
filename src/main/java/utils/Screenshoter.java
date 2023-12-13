@@ -1,8 +1,8 @@
 package main.java.utils;
 
 import com.epam.reportportal.service.ReportPortal;
-import main.java.core.driver.WebDriverManager;
-import main.java.core.logger.Log;
+import main.java.ui.core.driver.WebDriverManager;
+import main.java.ui.core.logger.Log;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
