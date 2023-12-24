@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public enum Condition {
+public enum FilterCondition {
 
     LAUNCH_NAME("Launch name"),
     DESCRIPTION("Description");

@@ -1,4 +1,4 @@
-package main.java.ui.pagefactory.page;
+package main.java.ui.pagefactory.page.classic;
 
 import lombok.Getter;
 import main.java.ui.core.logger.Log;

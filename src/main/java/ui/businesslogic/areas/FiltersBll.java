@@ -3,9 +3,9 @@ package main.java.ui.businesslogic.areas;
 import com.google.inject.Inject;
 import lombok.Getter;
 import main.java.ui.businesslogic.model.Filter;
-import main.java.ui.pagefactory.service.FiltersServiceBase;
-import main.java.ui.pagefactory.service.LaunchesServiceBase;
-import main.java.ui.pagefactory.service.CommonComponentsServiceBase;
+import main.java.ui.pagefactory.service.classic.FiltersServiceBase;
+import main.java.ui.pagefactory.service.classic.LaunchesServiceBase;
+import main.java.ui.pagefactory.service.classic.CommonComponentsServiceBase;
 
 @Getter
 public class FiltersBll {

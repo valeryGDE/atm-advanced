@@ -1,4 +1,4 @@
-package main.java.ui.pagefactory.page;
+package main.java.ui.pagefactory.page.classic;
 
 import main.java.ui.core.logger.Log;
 import main.java.utils.Screenshoter;

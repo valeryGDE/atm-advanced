@@ -1,6 +1,6 @@
-package main.java.ui.pagefactory.service;
+package main.java.ui.pagefactory.service.classic;
 
-import main.java.ui.pagefactory.page.LoginPage;
+import main.java.ui.pagefactory.page.classic.LoginPage;
 import main.java.ui.pagefactory.pagebase.AbstractBaseService;
 
 public class LoginServiceBase extends AbstractBaseService<LoginPage> {

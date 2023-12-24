@@ -1,9 +1,9 @@
-package main.java.ui.pagefactory.service;
+package main.java.ui.pagefactory.service.classic;
 
 import main.java.ui.businesslogic.model.Filter;
 import main.java.ui.core.logger.Log;
-import main.java.ui.enums.Condition;
-import main.java.ui.pagefactory.page.LaunchesPage;
+import main.java.ui.enums.FilterCondition;
+import main.java.ui.pagefactory.page.classic.LaunchesPage;
 import main.java.ui.pagefactory.pagebase.AbstractBaseService;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,7 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.time.Duration;
 import java.util.List;
 
-import static main.java.ui.pagefactory.page.AbstractPage.DEFAULT_TIMEOUT;
+import static main.java.ui.pagefactory.page.classic.AbstractPage.DEFAULT_TIMEOUT;
 
 public class LaunchesServiceBase extends AbstractBaseService<LaunchesPage> {
 
@@ -76,26 +76,25 @@ public class LaunchesServiceBase extends AbstractBaseService<LaunchesPage> {
     }
 
 
-    private void addCondition(Condition condition) {
+    private void addCondition(FilterCondition filterCondition) {
         clickMoreButton();
         getPage().getConditionCheckboxes().stream()
-                .filter(checkbox -> checkbox.getText().equals(condition.getKey()))
+                .filter(checkbox -> checkbox.getText().equals(filterCondition.getKey()))
                 .findFirst()
                 .ifPresent(WebElement::click);
-
     }
 
-    private void getConditionWithName(Condition condition) {
-        WebElement entity = findConditionEntity(condition);
+    private void getConditionWithName(FilterCondition filterCondition) {
+        WebElement entity = findConditionEntity(filterCondition);
         if (entity == null) {
-            addCondition(condition);
+            addCondition(filterCondition);
         }
     }
 
-    private WebElement findConditionEntity(Condition condition) {
+    private WebElement findConditionEntity(FilterCondition filterCondition) {
         return getPage().getFilterEntities()
                 .stream()
-                .filter(entity -> getPage().getConditionEntityName(entity).equals(condition.getKey()))
+                .filter(entity -> getPage().getConditionEntityName(entity).equals(filterCondition.getKey()))
                 .findFirst()
                 .orElse(null);
     }

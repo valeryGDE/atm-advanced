@@ -1,4 +1,4 @@
-package main.java.ui.pagefactory.page;
+package main.java.ui.pagefactory.page.classic;
 
 import main.java.ui.core.driver.WebDriverManager;
 import org.apache.commons.lang3.StringUtils;
