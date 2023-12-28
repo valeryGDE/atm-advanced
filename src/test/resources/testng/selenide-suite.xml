@@ -1,0 +1,30 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Selenide suite">
+
+    <test name="ChromeTest">
+        <classes>
+            <class name="test.selenide.SelenideFiltersTest">
+                <parameter name="browser" value="chrome"/>
+                <methods>
+                    <include name="createFilter"/>
+                    <include name="deleteFilter"/>
+                    <include name="editFilter"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="EdgeTest">
+        <classes>
+            <class name="test.selenide.SelenideFiltersTest">
+                <parameter name="browser" value="edge"/>
+                <methods>
+                    <include name="cloneFilter"/>
+                    <include name="disableDisplayingFilter"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>

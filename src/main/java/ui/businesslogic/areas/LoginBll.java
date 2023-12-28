@@ -6,9 +6,9 @@ import main.java.ui.businesslogic.model.Account;
 import main.java.ui.core.logger.Log;
 import main.java.ui.core.properties.EnvProperty;
 import main.java.ui.core.properties.PropertyReader;
-import main.java.ui.pagefactory.service.CommonComponentsServiceBase;
-import main.java.ui.pagefactory.service.LoginServiceBase;
-import main.java.ui.pagefactory.service.SideBarServiceBase;
+import main.java.ui.pagefactory.service.classic.CommonComponentsServiceBase;
+import main.java.ui.pagefactory.service.classic.LoginServiceBase;
+import main.java.ui.pagefactory.service.classic.SideBarServiceBase;
 
 @Getter
 public class LoginBll {
@@ -27,7 +27,7 @@ public class LoginBll {
     }
 
     public void logIn(Account account) {
-        Log.info(String.format("Log in using account: '%s'", account.getEmail()));
+        Log.info("Log in using account: '%s'".formatted(account.getEmail()));
         loginService.openPage(PropertyReader.getProperty(EnvProperty.LOCAL_BASE_URL.getKey()));
         loginService.fillPasswordInput(account.getPassword());
         loginService.fillEmailInput(account.getEmail());

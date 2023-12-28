@@ -5,7 +5,7 @@ import io.cucumber.java.en.*;
 import main.java.ui.businesslogic.areas.FiltersBll;
 import main.java.ui.businesslogic.areas.LoginBll;
 import main.java.ui.businesslogic.model.Filter;
-import main.java.ui.enums.Condition;
+import main.java.ui.enums.FilterCondition;
 import org.testng.Assert;
 import test.cucumber.context.TestContext;
 
@@ -33,14 +33,14 @@ public class FiltersSteps {
 
     @When("the user creates new filter with {string} and {string} and {string}")
     public void createFilter(String condition, String conditionName, String filterName) {
-        filtersBll.createFilter(new Filter(Map.of(Condition.valueOf(condition), conditionName), filterName));
+        filtersBll.createFilter(new Filter(Map.of(FilterCondition.valueOf(condition), conditionName), filterName));
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
     }
 
     @When("the user creates new filter with {string} and {string} and {string} from Launches page")
     public void createFilterFromLaunchesPage(String condition, String conditionName, String filterName) {
-        filtersBll.createFilter(false, new Filter(Map.of(Condition.valueOf(condition), conditionName), filterName));
+        filtersBll.createFilter(false, new Filter(Map.of(FilterCondition.valueOf(condition), conditionName), filterName));
     }
 
     @When("the user creates new filters")
@@ -48,10 +48,10 @@ public class FiltersSteps {
         List<Map<String, String>> data = dataTable.asMaps();
         List<Filter> filtersList = new ArrayList<>();
         for (Map<String, String> form : data) {
-            String condition = form.get("Condition");
-            String conditionName = form.get("Condition name");
+            String condition = form.get("FilterCondition");
+            String conditionName = form.get("FilterCondition name");
             String filterName = form.get("Filter name");
-            filtersList.add(new Filter(Map.of(Condition.valueOf(condition), conditionName), filterName));
+            filtersList.add(new Filter(Map.of(FilterCondition.valueOf(condition), conditionName), filterName));
         }
         filtersBll.createFilter(filtersList.toArray(new Filter[0]));
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
@@ -64,7 +64,7 @@ public class FiltersSteps {
         String condition = details.get(0);
         String conditionName = details.get(1);
         String filterName = details.get(2);
-        filtersBll.createFilter(new Filter(Map.of(Condition.valueOf(condition), conditionName), filterName));
+        filtersBll.createFilter(new Filter(Map.of(FilterCondition.valueOf(condition), conditionName), filterName));
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();
         loginBll.getSideBarService().waitForFiltersButtonIsClickable();
 
@@ -111,10 +111,10 @@ public class FiltersSteps {
         List<Map<String, String>> data = dataTable.asMaps();
         List<Filter> filtersList = new ArrayList<>();
         for (Map<String, String> form : data) {
-            String condition = form.get("Condition");
-            String conditionName = form.get("Condition name");
+            String condition = form.get("FilterCondition");
+            String conditionName = form.get("FilterCondition name");
             String filterName = form.get("Filter name");
-            filtersList.add(new Filter(Map.of(Condition.valueOf(condition), conditionName), filterName));
+            filtersList.add(new Filter(Map.of(FilterCondition.valueOf(condition), conditionName), filterName));
         }
         filtersBll.createFilter(filtersList.toArray(new Filter[0]));
         filtersBll.getSpinnerService().waitForSpinnerIsNotShown();

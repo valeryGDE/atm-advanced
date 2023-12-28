@@ -13,6 +13,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
+import static com.codeborne.selenide.Selenide.screenshot;
+
 public class Screenshoter {
 
     public void makeScreenshot() {
@@ -25,6 +27,10 @@ public class Screenshoter {
         } catch (IOException e) {
             Log.error("Failed to save screenshot: " + e.getLocalizedMessage());
         }
+    }
+
+    public void makeScreenshotSelenide() {
+        screenshot(getCurrentTimeAsString());
     }
 
     private String getCurrentTimeAsString() {

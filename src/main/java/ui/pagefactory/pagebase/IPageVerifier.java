@@ -22,7 +22,7 @@ public interface IPageVerifier {
                     .ignoring(Exception.class)
                     .until(page -> this.isPageShown());
         } catch (TimeoutException timeoutException) {
-            Log.warn(String.format("Timeout %s exceeded", duration));
+            Log.warn("Timeout %s exceeded".formatted(duration));
         }
     }
 }
