@@ -4,7 +4,7 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    sh 'gradle test -Psuite=testng-suite.xml'
+                    sh './gradlew clean test -Psuite=testng-suite.xml'
                 }
             }
             post {
