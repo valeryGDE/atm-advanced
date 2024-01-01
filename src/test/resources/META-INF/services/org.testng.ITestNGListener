@@ -1,2 +1,3 @@
 #com.epam.reportportal.testng.ReportPortalTestNGListener
 main.java.ui.core.listener.TestListener
+org.testng.reporters.XMLReporter
