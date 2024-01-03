@@ -4,7 +4,7 @@ import main.java.ui.businesslogic.manager.AccountManager;
 import org.junit.jupiter.api.Test;
 import org.testng.Assert;
 
-class LoginTest extends BaseTest {
+class LoginTestJunit extends BaseTestJunit {
 
     @Test
     void loginDefaultUser() {

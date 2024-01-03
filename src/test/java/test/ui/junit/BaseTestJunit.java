@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-public class BaseTest extends DataProviders {
+public class BaseTestJunit extends DataProviders {
 
     @Inject
     protected LoginBll loginBll;
