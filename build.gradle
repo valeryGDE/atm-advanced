@@ -73,5 +73,7 @@ sonar {
     properties {
         property "sonar.projectKey", "atm-advanced"
         property "sonar.projectName", "atm-advanced"
+        property "sonar.sources", "src/main/java"
+        property "sonar.tests", "src/test/java"
     }
 }
