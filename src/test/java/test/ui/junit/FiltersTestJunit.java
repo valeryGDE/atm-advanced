@@ -10,7 +10,7 @@ import test.ui.testng.BaseTest;
 
 import java.util.Map;
 
-class FiltersTest extends BaseTest {
+class FiltersTestJunit extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("getFiltersNamesForCreation")
