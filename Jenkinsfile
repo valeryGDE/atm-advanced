@@ -13,6 +13,7 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh './gradlew sonar'
                 }
+            }
         }
         stage('Test') {
             steps {
