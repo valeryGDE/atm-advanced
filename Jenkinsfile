@@ -23,11 +23,11 @@ pipeline {
             }
             post {
                 always {
-                        script {
-                             junit '**/build/reports/tests/test/testng-results.xml'
-                             updateGitHubCommitStatus(state: currentBuild.currentResult, context: 'CI',
-                                message: "$JOB_NAME ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}")
-                        }
+                    step([$class: 'Publisher', reportFilenamePattern: '**/build/reports/tests/test/testng-results.xml'])
+                    script {
+                        updateGitHubCommitStatus(state: currentBuild.currentResult, context: 'CI',
+                            message: "$JOB_NAME ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}")
+                    }
                 }
             }
         }
