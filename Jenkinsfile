@@ -13,14 +13,6 @@ pipeline {
                 withSonarQubeEnv('sonarqube') {
                     sh './gradlew sonar'
                 }
-            }
-//             post {
-//                 always {
-//                     githubNotify context: 'Sonarqube',
-//                         description: currentBuild.currentResult,
-//                         status: currentBuild.result
-//                 }
-//             }
         }
         stage('Test') {
             steps {
