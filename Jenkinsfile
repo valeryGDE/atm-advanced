@@ -14,13 +14,13 @@ pipeline {
                     sh './gradlew sonar'
                 }
             }
-            post {
-                always {
-                    githubNotify context: 'Sonarqube',
-                        description: currentBuild.currentResult,
-                        status: currentBuild.result
-                }
-            }
+//             post {
+//                 always {
+//                     githubNotify context: 'Sonarqube',
+//                         description: currentBuild.currentResult,
+//                         status: currentBuild.result
+//                 }
+//             }
         }
         stage('Test') {
             steps {
