@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(description = "KAN-1")
     public void loginDefaultUser() {
         loginBll.logIn(AccountManager.defaultAccount());
         loginBll.getSideBarService().waitPageIsShown();
@@ -16,6 +16,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void loginToRemoteReportPortal() {
         loginBll.logInEpam();
+        Assert.assertTrue(loginBll.getSideBarService().isPageShown(), "Check Sidebar is shown");
     }
 
     @Test
